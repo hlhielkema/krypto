@@ -1,0 +1,27 @@
+﻿ul.link-list {
+    float: left;
+    width: 100%;
+    list-style: circle;
+    margin-bottom: 16px;
+    padding-left:24px;
+    li {
+        float: left;
+        width: 100%;
+
+        a {
+            color: #1e2f50;
+            display: block;
+            padding: 4px 8px 4px 0;
+            float: left;
+            font-size: 12px;
+        }
+
+        .created-by {
+            float: left;
+            padding: 4px;
+            font-size: 10px;
+            line-height: 12px;
+            color: #ccc;
+        }
+    }
+}

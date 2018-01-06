@@ -50,6 +50,13 @@ namespace ProjectBluefox.Controllers
                 IsActive = active == "currencies",
             };
 
+            yield return new NavigationMenuButton()
+            {
+                DisplayName = "Links",
+                Url = "/Links/Index",
+                IsActive = active == "links",
+            };
+
             if (HasRole(AccountRole.SystemAdministrator))
             {
                 yield return new NavigationMenuButton()

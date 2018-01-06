@@ -13,7 +13,7 @@ namespace ProjectBluefox.Database.Tables
         public Guid ExternalId { get; set; }
 
         [Column]
-        public string DisplayName { get; set; }
+        public string Title { get; set; } // max 200
 
         [Column]
         public bool Deleted { get; set; }

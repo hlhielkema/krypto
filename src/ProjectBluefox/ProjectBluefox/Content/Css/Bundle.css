@@ -42,7 +42,9 @@ table {
   font-size: 12px;
   cursor: pointer;
   display: block;
-  text-decoration: none; }
+  text-decoration: none;
+  width: auto;
+  border: 0; }
   .button:hover {
     background: #2374a9; }
   .button:active {
@@ -3502,6 +3504,28 @@ body {
   border-bottom: solid 2px #efefef;
   padding-top: 16px;
   margin-bottom: 16px; }
+
+ul.link-list {
+  float: left;
+  width: 100%;
+  list-style: circle;
+  margin-bottom: 16px;
+  padding-left: 24px; }
+  ul.link-list li {
+    float: left;
+    width: 100%; }
+    ul.link-list li a {
+      color: #1e2f50;
+      display: block;
+      padding: 4px 8px 4px 0;
+      float: left;
+      font-size: 12px; }
+    ul.link-list li .created-by {
+      float: left;
+      padding: 4px;
+      font-size: 10px;
+      line-height: 12px;
+      color: #ccc; }
 
 /* Tables */
 table.data-table {

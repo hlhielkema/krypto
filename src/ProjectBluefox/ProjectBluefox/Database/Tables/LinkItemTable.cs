@@ -16,10 +16,10 @@ namespace ProjectBluefox.Database.Tables
         public int Category { get; set; }
 
         [Column]
-        public string DisplayName { get; set; }
+        public string Title { get; set; } // max 200
 
         [Column]
-        public string Url { get; set; }
+        public string Url { get; set; } // max 200
 
         [Column]
         public bool Deleted { get; set; }

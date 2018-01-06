@@ -4,7 +4,7 @@
     self.password = ko.observable('');
     self.result = ko.observable('');
 
-    self.submit = function () {        
+    self.signIn = function () {                
         if (self.username() !== '' && self.password() !== '') {          
             $.ajax({
                 type: "POST",
@@ -30,4 +30,12 @@
 
 }
 
-ko.applyBindings(new SignInViewModel());
+var viewModel = new SignInViewModel();
+
+ko.applyBindings(viewModel);
+
+// Custom submit binding because of an iphone bug
+$(".sign-in-form form").submit(function (e) {
+    viewModel.signIn();
+    return false;
+});

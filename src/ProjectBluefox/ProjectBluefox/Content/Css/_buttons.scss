@@ -9,6 +9,8 @@
     cursor: pointer;
     display:block;
     text-decoration:none;
+    width: auto;
+    border:0;
 
     &:hover {
         background: #2374a9;

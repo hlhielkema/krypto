@@ -41,7 +41,9 @@ table {
   font-size: 12px;
   cursor: pointer;
   display: block;
-  text-decoration: none; }
+  text-decoration: none;
+  width: auto;
+  border: 0; }
   .button:hover {
     background: #2374a9; }
   .button:active {

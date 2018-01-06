@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = @"..\Shared\_Layout.cshtml";
+    ViewBag.Title = "Link";
+}
+
+<h1>Links</h1>
+
+<p class="hidden-max-sm">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+</p>
+<p class="hidden-min-sm">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+</p>
+
+<div class="seperation-line"></div>
+
+<div data-bind="foreach: categories">
+    <h3 data-bind="text: title"></h3>
+    <ul data-bind="foreach: items" class="link-list">
+        <li>
+            <a data-bind="text: title, attr: { href: url }" href="#" target="_blank"></a>
+            <div class="created-by">
+                Created by @@<span data-bind="text: createdBy"></span>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ViewModels/Links/LinksViewModel.js")
+}

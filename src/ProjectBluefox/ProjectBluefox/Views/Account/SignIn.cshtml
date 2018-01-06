@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />    
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Krypto</title>
@@ -30,11 +30,10 @@
                 <input type="text" data-bind="value: username" />
                 <div class="label">Password</div>
                 <input type="password" data-bind="value: password" />
+                <div class="sign-in-result" data-bind="text: result"></div>
+                <input type="submit" class="button submit-button" value="Sign-in" />
             </form>
-            <div class="sign-in-result" data-bind="text: result"></div>
-            <div class="button submit-button" data-bind="click: submit">
-                Sign-in
-            </div>
+
         </div>
     </div>
 

@@ -146,9 +146,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CurrenciesController.cs" />
+    <Compile Include="Controllers\LinksController.cs" />
     <Compile Include="Database\Enums\AccountRole.cs" />
     <Compile Include="Database\Managers\AccountsManager.cs" />
     <Compile Include="Database\Managers\CurrenciesManager.cs" />
+    <Compile Include="Database\Managers\LinksManager.cs" />
     <Compile Include="Database\Tables\AccountTable.cs" />
     <Compile Include="Database\Tables\CurrencyCommentTable.cs" />
     <Compile Include="Database\Tables\CurrencyExchangeTable.cs" />
@@ -167,6 +169,8 @@
     <Compile Include="Models\CreateAccountModel.cs" />
     <Compile Include="Models\CreateCommentModel.cs" />
     <Compile Include="Models\CurrencyInfo.cs" />
+    <Compile Include="Models\LinkCategoryModel.cs" />
+    <Compile Include="Models\LinkModel.cs" />
     <Compile Include="Models\NavigationMenuButton.cs" />
     <Compile Include="Models\SignInResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -210,6 +214,7 @@
     <Content Include="Content\Css\_layout.scss" />
     <Content Include="Content\Css\bundle.scss" />
     <Content Include="Content\Css\sign-in.scss" />
+    <Content Include="Content\Css\_links-list.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -225,6 +230,7 @@
     <Content Include="Scripts\ViewModels\Currencies\CreateCurrencyViewModel.js" />
     <Content Include="Scripts\ViewModels\Currencies\CurrenciesViewModel.js" />
     <Content Include="Scripts\ViewModels\Currencies\CurrencyViewModel.js" />
+    <Content Include="Scripts\ViewModels\Links\LinksViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -241,6 +247,7 @@
     <Content Include="Views\Currencies\Currency.cshtml" />
     <Content Include="Views\Account\Accounts.cshtml" />
     <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Links\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
