@@ -1,0 +1,20 @@
+﻿.button {
+    float: left;
+    margin: 12px 0 4px 0;
+    padding: 8px 16px;
+    background: #1fa1f7;
+    color: #fff;
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    display:block;
+    text-decoration:none;
+
+    &:hover {
+        background: #2374a9;
+    }
+
+    &:active {
+        background: #1d2e51;
+    }
+}

@@ -1,0 +1,34 @@
+﻿
+/* Body */
+body {
+    background: #fff;
+    font-family: Helvetica,"Malgun Gothic","Apple SD Gothic Neo",AppleGothic,Dotum,Arial,Tahoma;
+}
+
+.content-body {
+    padding-top: 22px;
+}
+
+/* Layout */
+
+.container {
+    margin: 0 auto;
+    width: 1224px;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.row {
+    float: left;
+    width: 100%;
+}
+
+/* Seperation */
+.seperation-line {
+    float: left;
+    width: 100%;
+    border-bottom: solid 2px #efefef;
+    padding-top: 16px;
+    margin-bottom: 16px;
+}

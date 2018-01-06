@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = @"..\Shared\_Layout.cshtml";
+    ViewBag.Title = "Currencies";
+}
+
+<h1>Crypto currency recommendations</h1>
+
+<p class="hidden-max-sm">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+</p>
+<p class="hidden-min-sm">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+</p>
+
+<a class="button" href="/Currencies/CreateCurrency">Add currency</a>
+
+<div class="seperation-line"></div>
+
+<table class="currencies-table">
+    <thead>
+        <tr>
+            <th>Votes</th>
+            <th>Name</th>
+            <th class="hidden-max-sm">Short code</th>
+            <th class="hidden-max-md">Added by</th>
+            <th class="hidden-max-md">Created at</th>
+            <th >Comments(last 7d)</th>
+            <th class="hidden-max-md">Comments</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: currencies">
+        <tr>
+            <td>
+                <div class="vote-score" data-bind="text: scoreLabel, css: scoreClass">
+                </div>
+            </td>
+            <td>
+                <a href="#" data-bind="text: displayName, attr: { href: url }"></a>
+            </td>
+            <td class="hidden-max-sm">
+                <a href="#" data-bind="text: shortCode, attr: { href: url }"></a>
+            </td>
+            <td class="hidden-max-md" data-bind="text: createdBy"></td>
+            <td class="hidden-max-md" data-bind="text: dateCreated"></td>
+            <td data-bind="text: recentComments"></td>
+            <td class="hidden-max-md" data-bind="text: totalComments"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ViewModels/Currencies/CurrenciesViewModel.js")
+}

@@ -1,0 +1,30 @@
+﻿form {
+    .label {
+        padding-top: 12px;
+        padding-bottom: 6px;
+
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    input, select, textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;        
+
+        width: 100%;
+        box-sizing: border-box;
+        border: solid 1px #d6d6d6;
+        padding: 6px 8px;
+        border-radius: 2px;
+
+        &:focus {
+            outline: none;
+            border-color: #1ea1f7;
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 200px;
+    }
+}

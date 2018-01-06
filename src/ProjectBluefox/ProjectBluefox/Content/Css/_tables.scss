@@ -1,0 +1,100 @@
+﻿/* Tables */
+
+table.data-table {
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 16px;
+
+    tr {
+        border-bottom: solid 1px #efefef;
+
+        th {
+            text-align: left;
+            font-weight: 600;
+            padding: 12px 0;
+            border-bottom: solid 1px #ccc;
+        }
+
+        td {
+            text-align: left;
+            padding: 12px 0;
+        }
+    }
+}
+
+table.properties-table {
+    font-size: 13px;
+    margin-bottom: 16px;
+
+    tr {
+
+        th, td {            
+            text-align: left;
+            padding: 4px 0;
+        }
+
+        td:first-child {
+            font-weight: 600;
+            padding-right: 40px;
+        }
+    }
+}
+
+
+
+table.currencies-table {
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 16px;
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    tr {
+        th {
+            text-align: left;
+            font-weight: 600;
+            padding: 4px 0;
+            border-bottom: solid 1px #ccc;
+        }
+
+        td {
+            text-align: left;
+            padding: 4px 0;
+            vertical-align: middle;
+        }
+
+        border-bottom: solid 1px #efefef;
+    }
+
+    .vote-score {
+        float: left;
+        background: #fff;
+        padding: 6px 8px;
+        border: solid 2px #000;
+        border-radius: 2px;
+        margin: 2px;
+        font-weight: 600;
+        width: 42px;
+        text-align: center;
+
+        &.neutral {
+            background: #efefef;
+            border-color: #d2d2d2;
+        }
+
+        &.positive {
+            background: #4CAF50;
+            border-color: #009688;
+            color: #fff;
+        }
+
+        &.negative {
+            background: #ff847b;
+            border-color: #f00;
+            color: #fff;
+        }
+    }
+}

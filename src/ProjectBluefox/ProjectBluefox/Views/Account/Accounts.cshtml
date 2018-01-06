@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = @"..\Shared\_Layout.cshtml";
+    ViewBag.Title = "Accounts";
+}
+
+<h1>Accounts</h1>
+<a class="button" href="/Account/CreateAccount">Add account</a>
+<div class="seperation-line"></div>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th class="hidden-max-sm">E-mail</th>
+            <th>Role</th>
+            <th>Enabled</th>
+            
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: accounts">
+        <tr>
+            <td data-bind="text: username"></td>
+            <td class="hidden-max-sm" data-bind="text: emailAddress"></td>
+            <td data-bind="text: role"></td>
+            <td data-bind="text: enabled"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ViewModels/Account/AccountsViewModel.js")
+}

@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = @"..\Shared\_Layout.cshtml";
+    ViewBag.Title = "Create Currency";
+}
+
+<h1>Create currency</h1>
+<form>
+    <div class="label">Name</div>
+    <input type="text" data-bind="value: displayName" />
+    <div class="label">Shortcode(3-5 charachters)</div>
+    <input type="text" data-bind="value: shortCode" />
+</form>
+<div class="button submit-button" data-bind="click: create">
+    Create
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/ViewModels/Currencies/CreateCurrencyViewModel.js")
+
+}

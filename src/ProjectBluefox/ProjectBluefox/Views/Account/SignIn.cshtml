@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Krypto</title>
+
+    <!-- Styles -->
+    @Styles.Render("~/Content/Css/sign-in.min.css")
+</head>
+<body>
+
+    <header>
+        <a href="/">
+            <img src="~/Content/Images/logo-wide.svg" height="46">
+        </a>
+    </header>
+    <div class="container">
+        <div class="sign-in-form">
+            <h1>Sign-in</h1>
+            <form>
+                <div class="label">Username or email address</div>
+                <input type="text" data-bind="value: username" />
+                <div class="label">Password</div>
+                <input type="password" data-bind="value: password" />
+            </form>
+            <div class="sign-in-result" data-bind="text: result"></div>
+            <div class="button submit-button" data-bind="click: submit">
+                Sign-in
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    @Scripts.Render("~/ScriptBundles/Vendors")
+    @Scripts.Render("~/Scripts/ViewModels/Account/SignInViewModel.js")
+</body>
+</html>

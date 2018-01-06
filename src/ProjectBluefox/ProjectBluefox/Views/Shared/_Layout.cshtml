@@ -1,0 +1,65 @@
+﻿@using ProjectBluefox.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Krypto</title>
+
+    <!-- Styles -->    
+    @Styles.Render("~/Content/Css/bundle.min.css")
+</head>
+<body>
+
+    <header class="row">
+        <div class="row primary-row">
+            <div class="container">
+                <a class="logo" href="/">
+                    <img src="~/Content/Images/logo-wide.svg" height="28">
+                </a>
+                <div class="search">
+                    <input type="text" placeholder="Search..." />
+                </div>
+            </div>
+        </div>
+
+        <div class="row menu-row">
+            <div class="container">
+                @if(ViewBag.MenuButtons != null)
+                {
+                    foreach(NavigationMenuButton button in ViewBag.MenuButtons)
+                    {
+                        if (button.IsActive)
+                        {
+                            <a href="@button.Url" class="menu-button active">
+                                @button.DisplayName
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@button.Url" class="menu-button">
+                                @button.DisplayName
+                            </a>
+                        }
+                    }
+                }
+                
+                <a href="/Account/SignOut" class="sign-out">
+                    Sign out
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="row content-body">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    @Scripts.Render("~/ScriptBundles/Vendors")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

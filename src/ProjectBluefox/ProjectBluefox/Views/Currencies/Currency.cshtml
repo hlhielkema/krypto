@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = @"..\Shared\_Layout.cshtml";
+    ViewBag.Title = "Currency";
+}
+
+<div class="currency-view" data-id="@Model">
+    <h1 data-bind="text: displayName"></h1>
+    <div class="seperation-line"></div>
+    <h2>Basic information</h2>
+    <table class="properties-table">
+        <tr><td>Name</td><td data-bind="text: displayName"></td></tr>
+        <tr><td>ShortCode</td><td data-bind="text: shortCode"></td></tr>
+        <tr><td>Date created</td><td data-bind="text: dateCreated"></td></tr>
+        <tr><td>Added by</td><td data-bind="text: createdBy"></td></tr>
+    </table>
+
+    <div class="seperation-line"></div>
+    <h2>Comments</h2>
+    <div class="comments" data-bind="foreach: comments">
+        <div class="comment">
+            <div class="vote-score" data-bind="text: voteLabel, css: voteClass">
+
+            </div>
+            <div class="content">
+                <div class="header">
+                    <div class="author" data-bind="text: createdBy"></div>
+                    <div class="create-date" data-bind="text: dateCreated"></div>
+                </div>
+                <div class="message" data-bind="text: message"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <h3>Create comment</h3>
+    <form>
+        <div class="label">Vote</div>
+        <select data-bind="options: voteOptions, optionsText: 'label', optionsValue : 'value', value: vote"></select>
+        <div class="label">Message</div>
+        <textarea data-bind="value: message"></textarea>
+    </form>
+    <div class="button submit-button" data-bind="click: sendComment">
+        Send
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ViewModels/Currencies/CurrencyViewModel.js")
+}

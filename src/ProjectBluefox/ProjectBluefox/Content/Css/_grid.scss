@@ -1,0 +1,286 @@
+﻿// YDENTIC STYLES FRAMEWORK
+// (C) 2017 Ydentic B.V.
+
+// Extra small
+$screen-xs-max: 767px;
+
+// Small
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+
+// Medium
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+
+// Large
+$screen-lg-min: 1200px;
+
+// Size steps
+$sizesSteps: (xs, 4px)
+,
+(sm, 8px),
+(md, 16px),
+(lg, 32px),
+(xl, 64px)
+;
+
+// Mixin to create responsive classes
+@mixin responsive($prefix, $suffix) {
+    // Minimum size
+    @media (min-width: $screen-sm-min) {
+        .#{$prefix}min-sm#{$suffix} {
+            @content
+        }
+    }
+
+    @media (min-width: $screen-md-min) {
+        .#{$prefix}min-md#{$suffix} {
+            @content
+        }
+    }
+    // Maximum size
+    @media (max-width: $screen-sm-max) {
+        .#{$prefix}max-sm#{$suffix} {
+            @content
+        }
+    }
+
+    @media (max-width: $screen-md-max) {
+        .#{$prefix}max-md#{$suffix} {
+            @content
+        }
+    }
+    // In size range
+    @media (max-width: $screen-xs-max) {
+        .#{$prefix}xs#{$suffix} {
+            @content
+        }
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        .#{$prefix}sm#{$suffix} {
+            @content
+        }
+    }
+
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+        .#{$prefix}md#{$suffix} {
+            @content
+        }
+    }
+
+    @media (min-width: $screen-lg-min) {
+        .#{$prefix}lg#{$suffix} {
+            @content
+        }
+    }
+}
+
+/*
+    Height classes
+
+    Format:
+    
+        full-height
+*/
+
+.full-height {
+    height: 100%;
+}
+
+/*
+    (Full width) row
+*/
+
+.row {
+    float: left;
+    width: 100%;
+}
+
+/*
+    Column width classes (0-12 range)
+
+    Format:
+
+        column-[size]
+        - where [size] is in the range 0(0%) to 12(100%).
+
+        or
+
+        column-[screen]-[size]
+        - where [size] is in the range 0(0%) to 12(100%).
+        - where [screen] is the screen size step (responsive)
+*/
+
+@for $i from 0 through 12 {
+    .column-#{$i} {
+        float: left;
+        width: #{100% * ($i / 12)};
+    }
+
+    @include responsive(column-, -#{$i}) {
+        float: left;
+        width: #{100% * ($i / 12)};
+    }
+}
+
+/*
+    (Smaller steps) Column width classes (0-24 range)
+
+    Format:
+
+        column-[size]
+        - where [size] is in the range 0(0%) to 24(100%).
+*/
+
+@for $i from 0 through 24 {
+    .column-x-#{$i} {
+        float: left;
+        width: #{100% * ($i / 24)};
+    }
+
+    @include responsive(column-x-, -#{$i}) {
+        float: left;
+        width: #{100% * ($i / 24)};
+    }
+}
+
+/* 
+    Column offset
+
+    Format:
+
+        column-offset-size
+        - where [size] is in the range 0(0%) to 12(100%).
+*/
+
+@for $i from 0 through 12 {
+    .column-offset-#{$i} {
+        margin-left: #{100% * ($i / 12)};
+    }
+
+    @include responsive(column-offset-, -#{$i}) {
+        margin-left: #{100% * ($i / 12)};
+    }
+}
+
+@for $i from 0 through 24 {
+    .column-x-offset-#{$i} {
+        margin-left: #{100% * ($i / 24)};
+    }
+
+    @include responsive(column-x-offset-, -#{$i}) {
+        margin-left: #{100% * ($i / 24)};
+    }
+}
+
+/* 
+    Margin classes
+
+    Format:
+
+	    m-[direction]-[size]
+
+    Directions:
+
+	    A = all
+	    T = top
+	    B = bottom
+	    L = left
+	    R = right
+
+    Sizes:
+
+	    XS = extra small (4px)
+	    SM  = small (8px)
+	    MD  = medium (16px)
+	    LG  = large (32px)
+	    XL = extra large (64px)
+
+*/
+
+@each $name, $size in $sizesSteps {
+    .m-a-#{$name} {
+        margin: $size;
+    }
+
+    .m-t-#{$name} {
+        margin-top: $size;
+    }
+
+    .m-r-#{$name} {
+        margin-right: $size;
+    }
+
+    .m-b-#{$name} {
+        margin-bottom: $size;
+    }
+
+    .m-l-#{$name} {
+        margin-left: $size;
+    }
+}
+
+/* 
+    Padding classes
+
+    Format:
+
+	    m-[direction]-[size]
+
+    Directions:
+
+	    A = all
+	    T = top
+	    B = bottom
+	    L = left
+	    R = right
+
+    Sizes:
+
+	    XS = extra small (4px)
+	    SM  = small (8px)
+	    MD  = medium (16px)
+	    LG  = large (32px)
+	    XL = extra large (64px)
+
+*/
+
+@each $name, $size in $sizesSteps {
+    .p-a-#{$name} {
+        box-sizing: border-box;
+        padding: $size;
+    }
+
+    .p-t-#{$name} {
+        box-sizing: border-box;
+        padding-top: $size;
+    }
+
+    .p-r-#{$name} {
+        box-sizing: border-box;
+        padding-right: $size;
+    }
+
+    .p-b-#{$name} {
+        box-sizing: border-box;
+        padding-bottom: $size;
+    }
+
+    .p-l-#{$name} {
+        box-sizing: border-box;
+        padding-left: $size;
+    }
+}
+
+/*
+    Hide content
+*/
+
+.hidden {
+    display: none;
+}
+
+@include responsive(hidden-, '') {
+    display: none;
+}

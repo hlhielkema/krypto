@@ -1,0 +1,73 @@
+﻿.comments {
+    float: left;
+    width: 100%;
+    margin-bottom: 16px;
+
+    .comment {
+        float: left;
+        width: 100%;
+        margin-bottom: 8px;
+
+        .vote-score {
+            float: left;
+            background: #fff;
+            padding: 6px 8px;
+            border: solid 2px #000;
+            border-radius: 2px;
+            margin: 2px;
+            font-weight: 600;
+            width: 42px;
+            text-align: center;
+
+            &.neutral {
+                background: #efefef;
+                border-color: #d2d2d2;
+            }
+
+            &.positive {
+                background: #4CAF50;
+                border-color: #009688;
+                color: #fff;
+            }
+
+            &.negative {
+                background: #ff847b;
+                border-color: #f00;
+                color: #fff;
+            }
+        }
+
+        .content {
+            margin-left: 16px;
+            float: left;
+            width: calc(100% - 82px);
+
+            .header {
+                float: left;
+                width: 100%;
+
+                .author {
+                    float: left;
+                    font-weight: 600;
+                    font-size: 13px;
+                    color: #1da1f7;
+                }
+
+                .create-date {
+                    float: left;
+                    color: #999;
+                    font-size: 10px;
+                    padding-left: 6px;
+                    line-height: 14px;
+                }
+            }
+
+            .message {
+                float: left;
+                width: 100%;
+                padding: 8px 0;
+                line-height: 20px;
+            }
+        }
+    }
+}

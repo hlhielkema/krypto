@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = @"..\Shared\_Layout.cshtml";
+    ViewBag.Title = "Create Account";
+}
+
+<h1>Create account</h1>
+<form>
+    <div class="label">Username</div>
+    <input type="text" data-bind="value: username" />
+    <div class="label">E-mail address</div>
+    <input type="text" data-bind="value: emailAddress" />
+    <div class="label">Password</div>
+    <input type="password" data-bind="value: password" />
+</form>
+<div class="button submit-button" data-bind="click: create">
+    Create
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/ViewModels/Account/CreateAccountViewModel.js")
+
+}

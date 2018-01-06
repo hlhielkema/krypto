@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "Content/Css/Layout.css",
+    "inputFile": "Content/Css/Layout.scss"
+  },
+  {
+    "outputFile": "Content/Css/Grid.css",
+    "inputFile": "Content/Css/Grid.scss"
+  },
+  {
+    "outputFile": "Content/Css/Bundle.css",
+    "inputFile": "Content/Css/Bundle.scss"
+  },
+  {
+    "outputFile": "Content/Css/SignIn.css",
+    "inputFile": "Content/Css/SignIn.scss"
+  },
+  {
+    "outputFile": "Content/Css/sign-in.css",
+    "inputFile": "Content/Css/sign-in.scss"
+  }
+]
