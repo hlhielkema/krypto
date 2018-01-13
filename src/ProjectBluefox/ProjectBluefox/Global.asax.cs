@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ProjectBluefox.Database.Util;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +18,9 @@ namespace ProjectBluefox
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Set the database connection string
+            MSSqlConnection.DatabaseConnectionString = ConfigurationManager.AppSettings.Get("DatabaseConnectionString");
         }
     }
 }

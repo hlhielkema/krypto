@@ -6,10 +6,14 @@ namespace ProjectBluefox.Database.Util
 {
     public sealed class MSSqlConnection : IDisposable
     {
+        public static string DatabaseConnectionString { get; set; }
+
         public static MSSqlConnection GetConnection()
         {
-            string connectionString = ConfigurationManager.AppSettings.Get("DatabaseConnectionString");
-            return new MSSqlConnection(connectionString);
+            if (DatabaseConnectionString != null)
+                return new MSSqlConnection(DatabaseConnectionString);
+            else
+                throw new InvalidOperationException("Connection string not set");
         }
 
         private DataContext _context;
