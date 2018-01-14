@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectBluefox.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,7 +24,9 @@ namespace ProjectBluefox.Models
 
         public int TotalComments { get; set; }
 
+        public CurrencyValueRates ValueRates { get; set; }
+
         public string FormattedDateCreated
-            => DateCreated.ToString("dd-MM-yyyy hh:mm");
+            => DateCreated.ToString("dd-MM-yyyy HH:mm");
     }
 }

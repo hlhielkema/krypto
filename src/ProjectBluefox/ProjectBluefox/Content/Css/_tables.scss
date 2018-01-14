@@ -1,5 +1,23 @@
 ﻿/* Tables */
 
+table {
+    td {
+        &.neutral {
+            font-weight: 600;
+        }
+
+        &.positive {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        &.negative {
+            color: #ff847b;
+            font-weight: 600;
+        }
+    }
+}
+
 table.data-table {
     width: 100%;
     font-size: 13px;

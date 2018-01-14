@@ -69,7 +69,7 @@ namespace ProjectBluefox.Controllers
         {
             IncludeMenu("currencies");
             if (CurrenciesManager.CurrencyExists(id))
-                return View(CurrenciesManager.GetCurrencyByShortCode(id).Id);
+                return View(CurrenciesManager.GetCurrencyBySymbol(id).Id);
             else
                 return RedirectToAction("Index");
         }

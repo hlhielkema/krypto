@@ -1,4 +1,5 @@
-﻿using ProjectBluefox.Database.Tables;
+﻿using ProjectBluefox.Data.Models;
+using ProjectBluefox.Database.Tables;
 using ProjectBluefox.Database.Util;
 using ProjectBluefox.Models;
 using System;
@@ -27,6 +28,7 @@ namespace ProjectBluefox.Database.Managers
                 Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
                 Table<CurrencyCommentTable> comments = connection.GetTable<CurrencyCommentTable>();
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
+                Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
 
                 DateTime recentDate = DateTime.Now.AddDays(-7);
 
@@ -39,17 +41,36 @@ namespace ProjectBluefox.Database.Managers
                                                   where c.DateCreated >= recentDate
                                                   select c)
                             let score = (int?)recentComments.Sum(c => c.Vote) ?? 0
+                            join r in currencyRates on x.Id equals r.Currency into allRates
+                            let rates = allRates.FirstOrDefault()
                             orderby score descending
                             select new CurrencyInfo()
                             {
                                 Id = x.ExternalId,
                                 DisplayName = x.DisplayName,
-                                ShortCode = x.ShortCode,              
+                                ShortCode = x.Symbol,
                                 DateCreated = x.DateCreated,
                                 CreatedBy = a.Username,
                                 Score = score,
                                 TotalComments = allComments.Count(),
                                 RecentComments = recentComments.Count(),
+                                ValueRates = (rates == null) ? null : new CurrencyValueRates()
+                                {
+                                    Symbol = x.Symbol,
+                                    Rank = rates.Rank,
+                                    PriceUsd = rates.PriceUsd,
+                                    VolumeUsd24h = rates.VolumeUsd24h,
+                                    MarketCapUsd = rates.MarketCapUsd,
+                                    AvailableSupply = rates.AvailableSupply,
+                                    TotalSupply = rates.TotalSupply,
+                                    MaxSupply = rates.MaxSupply,
+                                    PercentChange1h = rates.PercentChange1h,
+                                    PercentChange24h = rates.PercentChange24h,
+                                    LastUpdated = rates.LastUpdated,
+                                    PriceEur = rates.PriceEur,
+                                    VolumeEur24h = rates.VolumeEur24h,
+                                    MarketCapEur = rates.MarketCapEur,
+                                }
                             };
 
                 // Execute the query
@@ -71,6 +92,7 @@ namespace ProjectBluefox.Database.Managers
                 Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
                 Table<CurrencyCommentTable> comments = connection.GetTable<CurrencyCommentTable>();
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
+                Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
 
                 DateTime recentDate = DateTime.Now.AddDays(-7);
 
@@ -83,16 +105,35 @@ namespace ProjectBluefox.Database.Managers
                             let recentComments = (from c in allComments
                                                   where c.DateCreated >= recentDate
                                                   select c)
+                            join r in currencyRates on x.Id equals r.Currency into allRates
+                            let rates = allRates.FirstOrDefault()
                             select new CurrencyInfo()
                             {
-                                Id = x.ExternalId,
+                                Id = x.ExternalId,                                
                                 DisplayName = x.DisplayName,
-                                ShortCode = x.ShortCode,
+                                ShortCode = x.Symbol,
                                 DateCreated = x.DateCreated,
                                 CreatedBy = a.Username,
                                 Score = (int?)recentComments.Sum(c => c.Vote) ?? 0,
                                 TotalComments = allComments.Count(),
                                 RecentComments = recentComments.Count(),
+                                ValueRates = (rates == null) ? null : new CurrencyValueRates()
+                                {
+                                    Symbol = x.Symbol,
+                                    Rank = rates.Rank,
+                                    PriceUsd = rates.PriceUsd,
+                                    VolumeUsd24h = rates.VolumeUsd24h,
+                                    MarketCapUsd = rates.MarketCapUsd,
+                                    AvailableSupply = rates.AvailableSupply,
+                                    TotalSupply = rates.TotalSupply,
+                                    MaxSupply = rates.MaxSupply,
+                                    PercentChange1h = rates.PercentChange1h,
+                                    PercentChange24h = rates.PercentChange24h,
+                                    LastUpdated = rates.LastUpdated,
+                                    PriceEur = rates.PriceEur,
+                                    VolumeEur24h = rates.VolumeEur24h,
+                                    MarketCapEur = rates.MarketCapEur,
+                                }
                             };
 
                 // Execute the query
@@ -103,29 +144,59 @@ namespace ProjectBluefox.Database.Managers
         /// <summary>
         /// Get a currency by its shortcode
         /// </summary>
-        /// <param name="shortCode">currency short code</param>
+        /// <param name="symbol">currency symbol</param>
         /// <returns>currency info</returns>
-        public static CurrencyInfo GetCurrencyByShortCode(string shortCode)
+        public static CurrencyInfo GetCurrencyBySymbol(string symbol)
         {
             // Connect to the MSSQL database
             using (MSSqlConnection connection = MSSqlConnection.GetConnection())
             {
                 // Get the table
                 Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
+                Table<CurrencyCommentTable> comments = connection.GetTable<CurrencyCommentTable>();
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
+                Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
+
+                DateTime recentDate = DateTime.Now.AddDays(-7);
 
                 // Create the query
                 var query = from x in currencies
-                            where x.ShortCode == shortCode.ToUpper()
+                            where x.Symbol == symbol
                             where !x.Deleted
                             join a in accounts on x.CreatedBy equals a.Id
+                            join c in comments on x.Id equals c.Currency into allComments
+                            let recentComments = (from c in allComments
+                                                  where c.DateCreated >= recentDate
+                                                  select c)
+                            join r in currencyRates on x.Id equals r.Currency into allRates
+                            let rates = allRates.FirstOrDefault()
                             select new CurrencyInfo()
                             {
                                 Id = x.ExternalId,
                                 DisplayName = x.DisplayName,
-                                ShortCode = x.ShortCode,
+                                ShortCode = x.Symbol,
                                 DateCreated = x.DateCreated,
                                 CreatedBy = a.Username,
+                                Score = (int?)recentComments.Sum(c => c.Vote) ?? 0,
+                                TotalComments = allComments.Count(),
+                                RecentComments = recentComments.Count(),
+                                ValueRates = (rates == null) ? null : new CurrencyValueRates()
+                                {
+                                    Symbol = x.Symbol,
+                                    Rank = rates.Rank,
+                                    PriceUsd = rates.PriceUsd,
+                                    VolumeUsd24h = rates.VolumeUsd24h,
+                                    MarketCapUsd = rates.MarketCapUsd,
+                                    AvailableSupply = rates.AvailableSupply,
+                                    TotalSupply = rates.TotalSupply,
+                                    MaxSupply = rates.MaxSupply,
+                                    PercentChange1h = rates.PercentChange1h,
+                                    PercentChange24h = rates.PercentChange24h,
+                                    LastUpdated = rates.LastUpdated,
+                                    PriceEur = rates.PriceEur,
+                                    VolumeEur24h = rates.VolumeEur24h,
+                                    MarketCapEur = rates.MarketCapEur,
+                                }
                             };
 
                 // Execute the query
@@ -146,7 +217,7 @@ namespace ProjectBluefox.Database.Managers
             {
                 return CurrencyExists(connection, displayname, shortCode);
             }
-        }       
+        }
 
         /// <summary>
         /// Get if a currency with a given display name or short code exists
@@ -162,7 +233,7 @@ namespace ProjectBluefox.Database.Managers
 
             // Check if a currency exist with the same display name or short code
             return currencies.Any(x => !x.Deleted && (x.DisplayName.ToLower() == displayname.ToLower() ||
-                                                      x.ShortCode == shortCode.ToUpper()));
+                                                      x.Symbol == shortCode.ToUpper()));
         }
 
         /// <summary>
@@ -195,7 +266,7 @@ namespace ProjectBluefox.Database.Managers
             Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
 
             // Check if a currency exist with the same display name or short code
-            return currencies.Any(x => !x.Deleted && x.ShortCode == shortCode.ToUpper());
+            return currencies.Any(x => !x.Deleted && x.Symbol == shortCode.ToUpper());
         }
 
 
@@ -245,7 +316,7 @@ namespace ProjectBluefox.Database.Managers
                     throw new InvalidOperationException("A currency with the same display name or shortcode already exists");
 
                 // Get the table
-                Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();                
+                Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
 
                 // Create the external id for the currency
                 Guid externalId = Guid.NewGuid();
@@ -255,7 +326,7 @@ namespace ProjectBluefox.Database.Managers
                 {
                     ExternalId = externalId,
                     DisplayName = displayName,
-                    ShortCode = shortCode.ToUpper(),
+                    Symbol = shortCode.ToUpper(),
                     Deleted = false,
                     CreatedBy = AccountsManager.GetAccountId(connection, createdBy),
                     DateCreated = DateTime.Now,
@@ -278,7 +349,7 @@ namespace ProjectBluefox.Database.Managers
         {
             // Connect to the MSSQL database
             using (MSSqlConnection connection = MSSqlConnection.GetConnection())
-            {               
+            {
                 // Get the table
                 Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
 
@@ -321,7 +392,7 @@ namespace ProjectBluefox.Database.Managers
                                 CreatedBy = a.Username,
                                 Message = x.Message,
                                 Vote = x.Vote,
-                                DateCreated = x.DateCreated,                                
+                                DateCreated = x.DateCreated,
                             };
 
                 // Execute the query
@@ -334,7 +405,7 @@ namespace ProjectBluefox.Database.Managers
             // Connect to the MSSQL database
             using (MSSqlConnection connection = MSSqlConnection.GetConnection())
             {
-                // Get the table
+                // Get the tables
                 Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
                 Table<CurrencyCommentTable> comments = connection.GetTable<CurrencyCommentTable>();
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
@@ -364,6 +435,53 @@ namespace ProjectBluefox.Database.Managers
 
                 // Return the external id of the new comment
                 return externalId;
+            }
+        }
+
+        public static void UpdateRates(List<CurrencyValueRates> newRates)
+        {
+            // Connect to the MSSQL database
+            using (MSSqlConnection connection = MSSqlConnection.GetConnection())
+            {
+                // Get the tables
+                Table<CurrencyTable> currencies = connection.GetTable<CurrencyTable>();
+                Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
+
+                // Delete all current rate entries
+                currencyRates.DeleteAllOnSubmit(currencyRates.ToList());
+
+                // Create a look-up dictionary to find the currency id for a symbol
+                Dictionary<string, int> currencyLookup = currencies.ToDictionary(x => x.Symbol, x => x.Id);
+
+                // Loop through the new value rates
+                foreach (CurrencyValueRates rates in newRates)
+                {
+                    // Check if the currency is registered int he application
+                    if (currencyLookup.ContainsKey(rates.Symbol))
+                    {
+                        // Insert the currency rates information
+                        currencyRates.InsertOnSubmit(new CurrencyValueRatesTable()
+                        {
+                            Currency = currencyLookup[rates.Symbol],
+                            Rank = rates.Rank,
+                            PriceUsd = rates.PriceUsd,
+                            VolumeUsd24h = rates.VolumeUsd24h,
+                            MarketCapUsd = rates.MarketCapUsd,
+                            AvailableSupply = rates.AvailableSupply,
+                            TotalSupply = rates.TotalSupply,
+                            MaxSupply = rates.MaxSupply,
+                            PercentChange1h = rates.PercentChange1h,
+                            PercentChange24h = rates.PercentChange24h,
+                            LastUpdated = rates.LastUpdated,
+                            PriceEur = rates.PriceEur,
+                            VolumeEur24h = rates.VolumeEur24h,
+                            MarketCapEur = rates.MarketCapEur,
+                        });
+                    }
+                }
+
+                // Submit the changes
+                connection.SubmitChanges();
             }
         }
     }

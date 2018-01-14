@@ -15,6 +15,29 @@
         <tr><td>Added by</td><td data-bind="text: createdBy"></td></tr>
     </table>
 
+    <div data-bind="visible: valueRates, with: valueRates">
+        <div class="seperation-line"></div>
+        <h2>Value Rates</h2>
+        <table class="properties-table">
+            <tr data-bind="visible: moreVisible"><td>Rank</td><td data-bind="text: rank"></td></tr>
+            <tr><td>Price(USD)</td><td data-bind="text: priceUsd"></td></tr>
+            <tr><td>Price(EUR)</td><td data-bind="text: priceEur"></td></tr>
+            <tr><td>1H Change</td><td data-bind="text: formattedPercentChange1h, css: percentChange1hClass"></td></tr>
+            <tr><td>24H Change</td><td data-bind="text: formattedPercentChange24h, css: percentChange24hClass"></td></tr>
+            <tr data-bind="visible: moreVisible"><td class="p-t-md">24H Volume(USD)</td><td data-bind="text: volumeUsd24h"></td></tr>
+            <tr data-bind="visible: moreVisible"><td>Market Cap(USD)</td><td data-bind="text: marketCapUsd"></td></tr>
+            <tr data-bind="visible: moreVisible"><td>24H Volue(EUR)</td><td data-bind="text: volumeEur24h"></td></tr>
+            <tr data-bind="visible: moreVisible"><td>Market Cap(EUR)</td><td data-bind="text: marketCapEur"></td></tr>
+            <tr data-bind="visible: moreVisible"><td class="p-t-md">Available Supply</td><td data-bind="text: availableSupply"></td></tr>
+            <tr data-bind="visible: moreVisible"><td>Total Supply</td><td data-bind="text: totalSupply"></td></tr>
+            <tr data-bind="visible: moreVisible"><td>Max Supply</td><td data-bind="text: maxSupply"></td></tr>
+            <tr data-bind="visible: moreVisible"><td class="p-t-md">Last Updated</td><td data-bind="text: lastUpdated"></td></tr>
+        </table>
+        <div class="link-button" data-bind="visible: !moreVisible(), click: showMore">
+            Show more
+        </div>
+    </div>    
+
     <div class="seperation-line"></div>
     <h2>Comments</h2>
     <div class="comments" data-bind="foreach: comments">

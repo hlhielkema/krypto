@@ -53,6 +53,7 @@
     <Compile Include="Database\Tables\CurrencyCommentTable.cs" />
     <Compile Include="Database\Tables\CurrencyExchangeTable.cs" />
     <Compile Include="Database\Tables\CurrencyTable.cs" />
+    <Compile Include="Database\Tables\CurrencyValueRatesTable.cs" />
     <Compile Include="Database\Tables\ExchangeTable.cs" />
     <Compile Include="Database\Tables\LinkCategoryTable.cs" />
     <Compile Include="Database\Tables\LinkItemTable.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Models\CreateAccountModel.cs" />
     <Compile Include="Models\CreateCommentModel.cs" />
     <Compile Include="Models\CurrencyInfo.cs" />
+    <Compile Include="Models\CurrencyValueRates.cs" />
     <Compile Include="Models\LinkCategoryModel.cs" />
     <Compile Include="Models\LinkModel.cs" />
     <Compile Include="Models\NavigationMenuButton.cs" />

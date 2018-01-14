@@ -16,7 +16,7 @@ namespace ProjectBluefox.Database.Tables
         public string DisplayName { get; set; } // max 100
 
         [Column]
-        public string ShortCode { get; set; } // max 3
+        public string Symbol { get; set; } // max 3
 
         [Column]
         public bool Deleted { get; set; }

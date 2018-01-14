@@ -249,27 +249,27 @@ $sizesSteps: (xs, 4px)
 @each $name, $size in $sizesSteps {
     .p-a-#{$name} {
         box-sizing: border-box;
-        padding: $size;
+        padding: $size !important;
     }
 
     .p-t-#{$name} {
         box-sizing: border-box;
-        padding-top: $size;
+        padding-top: $size!important;
     }
 
     .p-r-#{$name} {
         box-sizing: border-box;
-        padding-right: $size;
+        padding-right: $size !important;
     }
 
     .p-b-#{$name} {
         box-sizing: border-box;
-        padding-bottom: $size;
+        padding-bottom: $size !important;
     }
 
     .p-l-#{$name} {
         box-sizing: border-box;
-        padding-left: $size;
+        padding-left: $size !important;
     }
 }
 

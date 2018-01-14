@@ -49,6 +49,17 @@ table {
   .button:active {
     background: #1d2e51; }
 
+.link-button {
+  color: #1fa1f7;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer; }
+  .link-button:hover {
+    color: #2374a9; }
+  .link-button:active {
+    color: #1d2e51; }
+
 form .label {
   padding-top: 12px;
   padding-bottom: 6px;

@@ -20,3 +20,18 @@
         background: #1d2e51;
     }
 }
+
+.link-button {
+    color: #1fa1f7;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor:pointer;
+    &:hover {
+        color: #2374a9;
+    }
+
+    &:active {
+        color: #1d2e51;
+    }
+}
