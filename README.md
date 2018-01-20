@@ -11,13 +11,21 @@ These are the stories of the Krypto boys trying to make bank and stay woke in th
     - logo       Krypto logo files
     - src        Project source code 
 
-## Setup
+## Development setup
 
 ### Requirements
 
-    - Microsoft Visual Studio 2017
-    - Microsoft MSSQL Server (Express)
-    - Microsoft MSSQL Server Management Studio
+#### Microsoft Visual Studio 2017
+
+    https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15
+    
+#### Microsoft MSSQL Server (Express)
+
+    https://www.microsoft.com/nl-nl/sql-server/sql-server-editions-express
+
+#### Microsoft MSSQL Server Management Studio
+
+    https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
 
 ### Event logger
 
