@@ -159,6 +159,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="browserconfig.xml" />
     <Content Include="Content\Css\Bundle.css">
       <DependentUpon>bundle.scss</DependentUpon>
     </Content>
@@ -171,6 +172,18 @@
     <Content Include="Content\Css\sign-in.min.css">
       <DependentUpon>sign-in.css</DependentUpon>
     </Content>
+    <Content Include="Content\Icons\android-chrome-192x192.png" />
+    <Content Include="Content\Icons\android-chrome-512x512.png" />
+    <Content Include="Content\Icons\apple-touch-icon-120x120.png" />
+    <Content Include="Content\Icons\apple-touch-icon-152x152.png" />
+    <Content Include="Content\Icons\apple-touch-icon-180x180.png" />
+    <Content Include="Content\Icons\apple-touch-icon-60x60.png" />
+    <Content Include="Content\Icons\apple-touch-icon-76x76.png" />
+    <Content Include="Content\Icons\apple-touch-icon.png" />
+    <Content Include="Content\Icons\favicon-16x16.png" />
+    <Content Include="Content\Icons\favicon-32x32.png" />
+    <Content Include="Content\Icons\mstile-150x150.png" />
+    <Content Include="Content\Icons\safari-pinned-tab.svg" />
     <Content Include="Content\Images\logo-wide.svg" />
     <Content Include="Content\Images\logo.svg" />
     <Content Include="Content\Vendors\FontAwesome\css\font-awesome.css" />
@@ -193,6 +206,8 @@
     <Content Include="Content\Css\bundle.scss" />
     <Content Include="Content\Css\sign-in.scss" />
     <Content Include="Content\Css\_links-list.scss" />
+    <Content Include="manifest.webapp" />
+    <Content Include="manifest.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
