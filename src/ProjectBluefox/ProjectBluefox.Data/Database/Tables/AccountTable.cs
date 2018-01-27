@@ -1,4 +1,5 @@
-﻿using System.Data.Linq.Mapping;
+﻿using System;
+using System.Data.Linq.Mapping;
 
 namespace ProjectBluefox.Database.Tables
 {
@@ -22,5 +23,8 @@ namespace ProjectBluefox.Database.Tables
 
         [Column]
         public int Role { get; set; }
+
+        [Column]
+        public DateTime? LastLogon { get; set; }
     }
 }

@@ -28,6 +28,9 @@ namespace ProjectBluefox.Database.Tables
         public int CreatedBy { get; set; }
 
         [Column]
+        public int? DeletedBy { get; set; }
+
+        [Column]
         public DateTime DateCreated { get; set; }
     }
 }

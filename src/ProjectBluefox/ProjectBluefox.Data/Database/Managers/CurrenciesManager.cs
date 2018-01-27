@@ -30,6 +30,7 @@ namespace ProjectBluefox.Database.Managers
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
                 Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
 
+                // Get the threshold date for when a comment is "recent"
                 DateTime recentDate = DateTime.Now.AddDays(-7);
 
                 // Create the query
@@ -40,7 +41,7 @@ namespace ProjectBluefox.Database.Managers
                             let recentComments = (from c in allComments
                                                   where c.DateCreated >= recentDate
                                                   select c)
-                            let score = (int?)recentComments.Sum(c => c.Vote) ?? 0
+                            let score = (int?)allComments.Sum(c => c.Vote) ?? 0
                             join r in currencyRates on x.Id equals r.Currency into allRates
                             let rates = allRates.FirstOrDefault()
                             orderby score descending
@@ -94,6 +95,7 @@ namespace ProjectBluefox.Database.Managers
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
                 Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
 
+                // Get the threshold date for when a comment is "recent"
                 DateTime recentDate = DateTime.Now.AddDays(-7);
 
                 // Create the query
@@ -114,7 +116,7 @@ namespace ProjectBluefox.Database.Managers
                                 ShortCode = x.Symbol,
                                 DateCreated = x.DateCreated,
                                 CreatedBy = a.Username,
-                                Score = (int?)recentComments.Sum(c => c.Vote) ?? 0,
+                                Score = (int?)allComments.Sum(c => c.Vote) ?? 0,
                                 TotalComments = allComments.Count(),
                                 RecentComments = recentComments.Count(),
                                 ValueRates = (rates == null) ? null : new CurrencyValueRates()
@@ -157,6 +159,7 @@ namespace ProjectBluefox.Database.Managers
                 Table<AccountTable> accounts = connection.GetTable<AccountTable>();
                 Table<CurrencyValueRatesTable> currencyRates = connection.GetTable<CurrencyValueRatesTable>();
 
+                // Get the threshold date for when a comment is "recent"
                 DateTime recentDate = DateTime.Now.AddDays(-7);
 
                 // Create the query
@@ -177,7 +180,7 @@ namespace ProjectBluefox.Database.Managers
                                 ShortCode = x.Symbol,
                                 DateCreated = x.DateCreated,
                                 CreatedBy = a.Username,
-                                Score = (int?)recentComments.Sum(c => c.Vote) ?? 0,
+                                Score = (int?)allComments.Sum(c => c.Vote) ?? 0,
                                 TotalComments = allComments.Count(),
                                 RecentComments = recentComments.Count(),
                                 ValueRates = (rates == null) ? null : new CurrencyValueRates()
@@ -344,8 +347,9 @@ namespace ProjectBluefox.Database.Managers
         /// Delete a currency
         /// </summary>
         /// <param name="currencyId">currency external id</param>
+        /// <param name="deletedBy">username of the deletor</param>
         /// <returns>true=currency deleted,false=currency not found</returns>
-        public static bool DeleteCurrency(Guid currencyId)
+        public static bool DeleteCurrency(Guid currencyId, string deletedBy)
         {
             // Connect to the MSSQL database
             using (MSSqlConnection connection = MSSqlConnection.GetConnection())
@@ -361,6 +365,9 @@ namespace ProjectBluefox.Database.Managers
                 // Set the currency deleted state
                 currency.Deleted = true;
 
+                // Set the deleted by
+                currency.DeletedBy = AccountsManager.GetAccountId(connection, deletedBy);
+
                 // Submit the changes
                 connection.SubmitChanges();
 
@@ -369,7 +376,12 @@ namespace ProjectBluefox.Database.Managers
             }
         }
 
-        public static List<CommentModel> GetComments(Guid currencyId)
+        /// <summary>
+        /// Get all comments for a currency
+        /// </summary>
+        /// <param name="currencyId">currency id</param>
+        /// <returns>list of comments</returns>
+        public static List<CommentModel> GetComments(Guid currencyId, bool includeDeleted = false)
         {
             // Connect to the MSSQL database
             using (MSSqlConnection connection = MSSqlConnection.GetConnection())
@@ -381,7 +393,7 @@ namespace ProjectBluefox.Database.Managers
 
                 // Create the query
                 var query = from x in comments
-                            where !x.Deleted
+                            where includeDeleted || !x.Deleted
                             join c in currencies on x.Currency equals c.Id
                             where c.ExternalId == currencyId
                             join a in accounts on x.CreatedBy equals a.Id
@@ -393,6 +405,8 @@ namespace ProjectBluefox.Database.Managers
                                 Message = x.Message,
                                 Vote = x.Vote,
                                 DateCreated = x.DateCreated,
+                                Deleted = x.Deleted,
+                                DeletedBy = (x.DeletedBy == null) ? null : (accounts.First(a => a.Id == x.DeletedBy).Username)
                             };
 
                 // Execute the query
@@ -400,6 +414,14 @@ namespace ProjectBluefox.Database.Managers
             }
         }
 
+        /// <summary>
+        /// Create a new comment
+        /// </summary>
+        /// <param name="currencyId">currency id</param>
+        /// <param name="message">message</param>
+        /// <param name="vote">vote</param>
+        /// <param name="createdBy">username of the comment author</param>
+        /// <returns>comment id</returns>
         public static Guid CreateComment(Guid currencyId, string message, int vote, string createdBy)
         {
             // Connect to the MSSQL database
@@ -438,6 +460,46 @@ namespace ProjectBluefox.Database.Managers
             }
         }
 
+        /// <summary>
+        /// Delete a comment
+        /// </summary>
+        /// <param name="commentId">comment</param>
+        /// <param name="deletedBy">username of the deletor</param>
+        /// <returns>
+        ///     true = deleted state changed
+        ///     false = deleted state did not change
+        /// </returns>
+        public static bool DeleteComment(Guid commentId, string deletedBy)
+        {
+            // Connect to the MSSQL database
+            using (MSSqlConnection connection = MSSqlConnection.GetConnection())
+            {
+                // Get the table                
+                Table<CurrencyCommentTable> comments = connection.GetTable<CurrencyCommentTable>();
+
+                // Try to get the comment entry
+                CurrencyCommentTable comment = comments.FirstOrDefault(x => x.ExternalId == commentId && !x.Deleted);
+                if (comment == null)
+                    return false; // Comment deleted state did not changed
+
+                // Set the comment deleted flag to true
+                comment.Deleted = true;
+
+                // Set the deleted by
+                comment.DeletedBy = AccountsManager.GetAccountId(connection, deletedBy);
+
+                // Submit the changes
+                connection.SubmitChanges();
+
+                // Comment deleted state changed, return true
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Update the value rates of all registed currencies
+        /// </summary>
+        /// <param name="newRates">lsit of currency value rates</param>
         public static void UpdateRates(List<CurrencyValueRates> newRates)
         {
             // Connect to the MSSQL database

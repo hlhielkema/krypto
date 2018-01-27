@@ -1,4 +1,5 @@
 ﻿using ProjectBluefox.Database.Enums;
+using System;
 
 namespace ProjectBluefox.Models
 {
@@ -11,6 +12,8 @@ namespace ProjectBluefox.Models
         public bool Enabled { get; set; }
 
         public int Role { get; set; }
+
+        public DateTime? LastLogon { get; set; }
 
         public string RoleName
             => ((AccountRole)Role).ToString();

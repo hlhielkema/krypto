@@ -61,7 +61,7 @@ table {
     color: #1d2e51; }
 
 form .label {
-  padding-top: 12px;
+  padding-top: 16px;
   padding-bottom: 6px;
   font-weight: 600;
   font-size: 12px; }
@@ -71,9 +71,9 @@ form input, form select, form textarea {
   -moz-appearance: none;
   width: 100%;
   box-sizing: border-box;
-  border: solid 1px #d6d6d6;
-  padding: 6px 8px;
-  border-radius: 2px; }
+  border: solid 2px #efefef;
+  padding: 8px;
+  background: #fff; }
   form input:focus, form select:focus, form textarea:focus {
     outline: none;
     border-color: #1ea1f7; }

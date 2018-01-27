@@ -14,6 +14,10 @@ namespace ProjectBluefox.Models
         
         public string Message { get; set; }
 
+        public bool Deleted { get; set; }
+
+        public string DeletedBy { get; set; }
+
         public string FormattedDateCreated
             => DateCreated.ToString("dd-MM-yyyy hh:mm");
     }

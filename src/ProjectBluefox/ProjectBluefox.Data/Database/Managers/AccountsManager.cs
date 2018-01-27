@@ -32,6 +32,7 @@ namespace ProjectBluefox.Database.Managers
                                 Username = x.Username,
                                 Enabled = x.Enabled,
                                 Role = x.Role,
+                                LastLogon = x.LastLogon,
                             };
 
                 // Execute the query
@@ -181,7 +182,6 @@ namespace ProjectBluefox.Database.Managers
                     // Set the enabled state
                     account.Enabled = enabled;
 
-
                     // Submit the changes
                     connection.SubmitChanges();
 
@@ -191,6 +191,34 @@ namespace ProjectBluefox.Database.Managers
                 else
                     // No state change
                     return false;
+            }
+        }
+
+        /// <summary>
+        /// Set the password of an account
+        /// </summary>
+        /// <param name="username">account username</param>
+        /// <param name="password">new plain text password</param>
+        public static void SetAccountPassword(string username, string password)
+        {
+            // Connect to the MSSQL database
+            using (MSSqlConnection connection = MSSqlConnection.GetConnection())
+            {
+                // Get the table
+                Table<AccountTable> accounts = connection.GetTable<AccountTable>();
+
+                // Get the account
+                AccountTable account = accounts.FirstOrDefault(x => x.Username == username);
+                if (account == null)
+                    throw new InvalidOperationException("Account not found");
+
+                string passwordHash = BCrypt.HashPassword(password, BCrypt.GenerateSalt());
+
+                // Update the password
+                account.Password = BCrypt.HashPassword(password, BCrypt.GenerateSalt());
+
+                // Submit the changes
+                connection.SubmitChanges();                
             }
         }
 

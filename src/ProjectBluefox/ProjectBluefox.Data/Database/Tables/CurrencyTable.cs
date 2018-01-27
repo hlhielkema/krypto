@@ -16,13 +16,16 @@ namespace ProjectBluefox.Database.Tables
         public string DisplayName { get; set; } // max 100
 
         [Column]
-        public string Symbol { get; set; } // max 3
+        public string Symbol { get; set; } // max 5
 
         [Column]
         public bool Deleted { get; set; }
 
         [Column]
         public int CreatedBy { get; set; }
+
+        [Column]
+        public int? DeletedBy { get; set; }
 
         [Column]
         public DateTime DateCreated { get; set; }

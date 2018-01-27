@@ -1,21 +1,19 @@
 ﻿form {
     .label {
-        padding-top: 12px;
+        padding-top: 16px;
         padding-bottom: 6px;
-
         font-weight: 600;
         font-size: 12px;
     }
 
     input, select, textarea {
         -webkit-appearance: none;
-        -moz-appearance: none;        
-
+        -moz-appearance: none;
         width: 100%;
         box-sizing: border-box;
-        border: solid 1px #d6d6d6;
-        padding: 6px 8px;
-        border-radius: 2px;
+        border: solid 2px #efefef;
+        padding: 8px;
+        background: #fff;
 
         &:focus {
             outline: none;
