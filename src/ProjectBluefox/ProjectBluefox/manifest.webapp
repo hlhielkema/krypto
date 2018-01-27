@@ -2,7 +2,7 @@
   "name": "Krypto",
   "short_name": "Krypto.frl",
   "description": "",
-  "start_url": "https://www.krypto.frl",
+  "start_url": "./",
   "background_color": "#333333",
   "theme_color": "#1fa1f7",
   "display": "standalone",

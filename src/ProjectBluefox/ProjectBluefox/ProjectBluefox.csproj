@@ -207,7 +207,6 @@
     <Content Include="Content\Css\sign-in.scss" />
     <Content Include="Content\Css\_links-list.scss" />
     <Content Include="manifest.webapp" />
-    <Content Include="manifest.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
