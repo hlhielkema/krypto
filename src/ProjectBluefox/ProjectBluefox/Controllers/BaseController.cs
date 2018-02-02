@@ -57,6 +57,20 @@ namespace ProjectBluefox.Controllers
                 IsActive = active == "links",
             };
 
+            yield return new NavigationMenuButton()
+            {
+                DisplayName = "Invite",
+                Url = "/Account/Invite",
+                IsActive = active == "invite",
+            };
+
+            yield return new NavigationMenuButton()
+            {
+                DisplayName = "Password",
+                Url = "/Account/ChangePassword",
+                IsActive = active == "changepassword",
+            };
+
             if (HasRole(AccountRole.SystemAdministrator))
             {
                 yield return new NavigationMenuButton()
@@ -66,6 +80,47 @@ namespace ProjectBluefox.Controllers
                     IsActive = active == "accounts",
                 };
             }
+        }
+
+        protected JsonResult JsonOK()
+        {
+            return Json(new { OK = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult FormatValidationErrors()
+        {
+            Dictionary<string, string> messages = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, ModelState> field in ModelState)
+            {
+                if (field.Value.Errors.Any())
+                {
+                    messages.Add(field.Key, field.Value.Errors.First().ErrorMessage);
+                }
+            }
+            Response.StatusCode = 412; // invalid request
+            return Json(messages, JsonRequestBehavior.AllowGet);
+        }
+
+        protected ActionResult CreateValidationError(string message)
+            => CreateValidationError("*", message);
+
+        protected ActionResult CreateValidationError(string name, string message)
+        {
+            Dictionary<string, string> messages = new Dictionary<string, string>
+            {
+                { name, message }
+            };
+            Response.StatusCode = 412; // invalid request
+            return Json(messages, JsonRequestBehavior.AllowGet);
+        }
+
+        protected ActionResult CreateValidationErrors(params KeyValuePair<string, string>[] errors)
+        {
+            Dictionary<string, string> messages = new Dictionary<string, string>();
+            foreach (KeyValuePair<string, string> field in errors)
+                messages.Add(field.Key, field.Value);
+            Response.StatusCode = 412; // invalid request
+            return Json(messages, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -19,6 +19,6 @@ namespace ProjectBluefox.Models
         public string DeletedBy { get; set; }
 
         public string FormattedDateCreated
-            => DateCreated.ToString("dd-MM-yyyy hh:mm");
+            => DateCreated.ToString("dd-MM-yyyy HH:mm");
     }
 }

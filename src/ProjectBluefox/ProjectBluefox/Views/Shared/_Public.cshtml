@@ -1,0 +1,41 @@
+﻿@using ProjectBluefox.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Krypto</title>
+
+    <!-- Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/Content/Icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Content/Icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Content/Icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/Content/Icons/safari-pinned-tab.svg" color="#333333">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.webapp">
+    <meta name="theme-color" content="#333333">
+
+    <!-- Styles -->
+    @Styles.Render("~/Content/Css/sign-in.min.css")
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img src="~/Content/Images/logo-wide.svg" height="46">
+        </a>
+    </header>
+
+    @RenderBody();
+
+    <!-- Scripts -->
+    @Scripts.Render("~/ScriptBundles/Vendors")
+    @Scripts.Render("~/ScriptBundles/Util")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

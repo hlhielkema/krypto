@@ -5,15 +5,20 @@
 }
 
 <h1>Create currency</h1>
-<form>
-    <div class="label">Name</div>
-    <input type="text" data-bind="value: displayName" />
-    <div class="label">Symbol(3-5 charachters)</div>
-    <input type="text" data-bind="value: shortCode" />
-</form>
-<div class="button submit-button" data-bind="click: create">
-    Create
+<div class="form">
+    <form>
+        <div class="form-element" data-name="Name">
+            <div class="label">Name</div>
+            <input type="text" data-bind="value: displayName" />
+        </div>
+        <div class="form-element" data-name="ShortCode">
+            <div class="label">Symbol(3-5 charachters)</div>
+            <input type="text" data-bind="value: shortCode" />
+        </div>
+        <input type="submit" class="button submit-button" value="Create" />
+    </form>   
 </div>
+
 
 @section Scripts {
 

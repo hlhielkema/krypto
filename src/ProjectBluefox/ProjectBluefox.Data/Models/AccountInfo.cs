@@ -17,5 +17,8 @@ namespace ProjectBluefox.Models
 
         public string RoleName
             => ((AccountRole)Role).ToString();
+
+        public string FormattedLastLogon
+            => LastLogon?.ToString("dd-MM-yyyy HH:mm") ?? "never";
     }
 }

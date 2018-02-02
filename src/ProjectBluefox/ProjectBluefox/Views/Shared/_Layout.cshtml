@@ -18,7 +18,7 @@
     <link rel="mask-icon" href="/Content/Icons/safari-pinned-tab.svg" color="#333333">
 
     <!-- Manifest -->
-    <link rel="manifest" href="manifest.webapp">
+    <link rel="manifest" href="/manifest.webapp">
     <meta name="theme-color" content="#333333">
 
     <!-- Styles -->
@@ -40,9 +40,9 @@
 
         <div class="row menu-row">
             <div class="container">
-                @if(ViewBag.MenuButtons != null)
+                @if (ViewBag.MenuButtons != null)
                 {
-                    foreach(NavigationMenuButton button in ViewBag.MenuButtons)
+                    foreach (NavigationMenuButton button in ViewBag.MenuButtons)
                     {
                         if (button.IsActive)
                         {
@@ -58,7 +58,7 @@
                         }
                     }
                 }
-                
+
                 <a href="/Account/SignOut" class="sign-out">
                     Sign out
                 </a>
@@ -73,6 +73,7 @@
 
     <!-- Scripts -->
     @Scripts.Render("~/ScriptBundles/Vendors")
+    @Scripts.Render("~/ScriptBundles/Util")
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -10,13 +10,16 @@ namespace ProjectBluefox
         {
             // Create the script bundles
             ScriptBundle vendorScriptsBundle = new ScriptBundle("~/ScriptBundles/Vendors");
+            ScriptBundle utilScriptsBundle = new ScriptBundle("~/ScriptBundles/Util");
 
             // Add the scripts to the script bundles
             vendorScriptsBundle.Include("~/Scripts/Vendors/jQuery/jquery-1.10.2.min.js",
                                         "~/Scripts/Vendors/KnockoutJs/knockout-3.4.2.js");
+            utilScriptsBundle.Include("~/Scripts/Util/form-validation.js");
 
             // Register the script and stylesheet bundles
             bundles.Add(vendorScriptsBundle);
+            bundles.Add(utilScriptsBundle);
         }
     }
 }

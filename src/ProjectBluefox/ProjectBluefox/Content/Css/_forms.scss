@@ -1,28 +1,60 @@
 ﻿form {
-    .label {
-        padding-top: 16px;
-        padding-bottom: 6px;
-        font-weight: 600;
-        font-size: 12px;
-    }
 
-    input, select, textarea {
-        -webkit-appearance: none;
-        -moz-appearance: none;
+
+    .form-element {
         width: 100%;
-        box-sizing: border-box;
-        border: solid 2px #efefef;
-        padding: 8px;
-        background: #fff;
 
-        &:focus {
-            outline: none;
-            border-color: #1ea1f7;
+        .label {
+            padding-top: 16px;
+            padding-bottom: 6px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        input, select, textarea {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            box-sizing: border-box;
+            border: solid 2px #efefef;
+            padding: 8px;
+            background: #fff;
+
+            &:focus {
+                outline: none;
+                border-color: #1ea1f7;
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 200px;
+        }
+
+        &.has-validation-errors {
+            input, select, textarea {
+                border-color: #f00;
+            }
+        }
+
+        .validation-error-message {
+            color: #f00;
+            font-weight: 600;
+            font-size: 12px;
+            padding-top: 4px;
+        }
+
+        &.error-only {
+            .validation-error-message {
+                margin-top: 12px;
+            }
         }
     }
 
-    textarea {
-        resize: vertical;
-        min-height: 200px;
+    .form-result {
+        color: red;
+        font-weight: 600;
+        font-size: 12px;
+        padding-top: 4px;
     }
 }

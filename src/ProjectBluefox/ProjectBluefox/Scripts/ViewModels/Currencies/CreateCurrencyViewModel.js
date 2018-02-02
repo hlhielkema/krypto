@@ -15,10 +15,19 @@
                 success: function (result) {
                     document.location = '/Currencies/Index';
                 },
+                error: krypto.validation.createAjaxErrorHandler(),
                 dataType: 'json'
             });
         }
     }
 }
 
-ko.applyBindings(new CreateCurrencyViewModel());
+var viewModel = new CreateCurrencyViewModel();
+
+ko.applyBindings(viewModel);
+
+// Custom submit binding because of an iphone bug
+$(".form form").submit(function (e) {
+    viewModel.create();
+    return false;
+});

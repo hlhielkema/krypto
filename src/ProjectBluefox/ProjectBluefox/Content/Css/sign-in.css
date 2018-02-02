@@ -60,27 +60,42 @@ table {
   .link-button:active {
     color: #1d2e51; }
 
-form .label {
-  padding-top: 16px;
-  padding-bottom: 6px;
+form .form-element {
+  width: 100%; }
+  form .form-element .label {
+    padding-top: 16px;
+    padding-bottom: 6px;
+    font-weight: 600;
+    font-size: 12px; }
+  form .form-element input, form .form-element select, form .form-element textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    border: solid 2px #efefef;
+    padding: 8px;
+    background: #fff; }
+    form .form-element input:focus, form .form-element select:focus, form .form-element textarea:focus {
+      outline: none;
+      border-color: #1ea1f7; }
+  form .form-element textarea {
+    resize: vertical;
+    min-height: 200px; }
+  form .form-element.has-validation-errors input, form .form-element.has-validation-errors select, form .form-element.has-validation-errors textarea {
+    border-color: #f00; }
+  form .form-element .validation-error-message {
+    color: #f00;
+    font-weight: 600;
+    font-size: 12px;
+    padding-top: 4px; }
+  form .form-element.error-only .validation-error-message {
+    margin-top: 12px; }
+
+form .form-result {
+  color: red;
   font-weight: 600;
-  font-size: 12px; }
-
-form input, form select, form textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 100%;
-  box-sizing: border-box;
-  border: solid 2px #efefef;
-  padding: 8px;
-  background: #fff; }
-  form input:focus, form select:focus, form textarea:focus {
-    outline: none;
-    border-color: #1ea1f7; }
-
-form textarea {
-  resize: vertical;
-  min-height: 200px; }
+  font-size: 12px;
+  padding-top: 4px; }
 
 body {
   background: #fff;
@@ -95,6 +110,9 @@ header {
     margin: 0 auto;
     padding: 16px; }
 
+.centered {
+  text-align: center; }
+
 h1 {
   color: #1e2f50;
   font-size: 26px;
@@ -105,16 +123,11 @@ h1 {
   float: left;
   width: 100%;
   margin-top: 40px; }
-  .container .sign-in-form {
+  .container .form {
     width: 400px;
     height: 132px;
     max-width: 100%;
     margin: 0 auto;
     padding: 8px;
     box-sizing: border-box; }
-    .container .sign-in-form .sign-in-result {
-      color: red;
-      font-weight: 600;
-      font-size: 12px;
-      padding-top: 4px; }
 

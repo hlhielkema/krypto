@@ -5,8 +5,8 @@
 }
 
 <h1>Accounts</h1>
-<a class="button" href="/Account/CreateAccount">Add account</a>
-<div class="seperation-line"></div>
+@*<a class="button" href="/Account/CreateAccount">Add account</a>
+<div class="seperation-line"></div>*@
 
 <table class="data-table">
     <thead>
@@ -15,7 +15,7 @@
             <th class="hidden-max-sm">E-mail</th>
             <th>Role</th>
             <th>Enabled</th>
-            
+            <th>Last logon</th>
         </tr>
     </thead>
     <tbody data-bind="foreach: accounts">
@@ -24,6 +24,7 @@
             <td class="hidden-max-sm" data-bind="text: emailAddress"></td>
             <td data-bind="text: role"></td>
             <td data-bind="text: enabled"></td>
+            <td data-bind="text: lastLogon"></td>            
         </tr>
     </tbody>
 </table>

@@ -115,6 +115,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.2\lib\net461\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.2\lib\net461\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ApplicationInsights">
@@ -151,6 +157,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Misc\RoleRequiredAttribute.cs" />
+    <Compile Include="Misc\ValidateAjaxFormAttribute.cs" />
+    <Compile Include="Misc\ValidUsernameAttribute.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CreateCurrencyModel.cs" />
+    <Compile Include="Models\InviteViewModel.cs" />
+    <Compile Include="Models\SignInModel.cs" />
+    <Compile Include="Models\SignUpModel.cs" />
+    <Compile Include="Models\SignUpViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -207,18 +221,21 @@
     <Content Include="Content\Css\sign-in.scss" />
     <Content Include="Content\Css\_links-list.scss" />
     <Content Include="manifest.webapp" />
+    <Content Include="Content\Css\_images.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\Vendors\jQuery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Util\form-validation.js" />
     <Content Include="Scripts\Vendors\jQuery\jquery-1.10.2.js" />
     <Content Include="Scripts\Vendors\jQuery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\Vendors\KnockoutJs\knockout-3.4.2.js" />
     <Content Include="Scripts\ViewModels\Account\AccountsViewModel.js" />
-    <Content Include="Scripts\ViewModels\Account\CreateAccountViewModel.js" />
+    <Content Include="Scripts\ViewModels\Account\ChangePasswordViewModel.js" />
     <Content Include="Scripts\ViewModels\Account\SignInViewModel.js" />
+    <Content Include="Scripts\ViewModels\Account\SignUpViewModel.js" />
     <Content Include="Scripts\ViewModels\Currencies\CreateCurrencyViewModel.js" />
     <Content Include="Scripts\ViewModels\Currencies\CurrenciesViewModel.js" />
     <Content Include="Scripts\ViewModels\Currencies\CurrencyViewModel.js" />
@@ -238,8 +255,12 @@
     <Content Include="Views\Currencies\CreateCurrency.cshtml" />
     <Content Include="Views\Currencies\Currency.cshtml" />
     <Content Include="Views\Account\Accounts.cshtml" />
-    <Content Include="Views\Account\CreateAccount.cshtml" />
     <Content Include="Views\Links\Index.cshtml" />
+    <Content Include="Views\Account\TokenExpired.cshtml" />
+    <Content Include="Views\Shared\_Public.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Account\Invite.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

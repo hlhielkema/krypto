@@ -14,12 +14,22 @@ namespace ProjectBluefox
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Sign-Up",
+                url: "signup/{token}",
+                defaults: new { controller = "Account", action = "SignUp" }
+            );
+
+            routes.MapRoute(
+                name: "Sign-in",
+                url: "signin",
+                defaults: new { controller = "Account", action = "SignIn" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Account", action = "Index", id = UrlParameter.Optional }
-            );
-
-            
+            );                        
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@{
+    Layout = @"..\Shared\_Public.cshtml";
+}
+
+<div class="container">
+    <div class="centered">
+        <h1>Token expired or invalid</h1>
+        <p>The token of the sign-up invite expired or is invalid. Please request a new invite.</p>
+    </div>    
+</div>
+
+@section Scripts {
+    <!-- Scripts -->
+    @Scripts.Render("~/Scripts/ViewModels/Account/SignInViewModel.js")
+}

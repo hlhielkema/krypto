@@ -85,6 +85,10 @@ namespace ProjectBluefox.Database.Managers
 
                 if (validPassword)
                 {
+                    // Update the last logon time and save the changes
+                    account.LastLogon = DateTime.Now;
+                    connection.SubmitChanges();
+
                     return new SignInResult(true, account.Username);
                 }
                 else
@@ -240,6 +244,48 @@ namespace ProjectBluefox.Database.Managers
 
             // Return the account id
             return account.Id;
+        }
+
+        /// <summary>
+        /// Gets if an username exists
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>true=exists, false=does not exist</returns>
+        public static bool UsernameExists(string username)
+        {
+            // Connect to the MSSQL database
+            using (MSSqlConnection connection = MSSqlConnection.GetConnection())
+            {
+                // Remove the spaces before and after the name and change the username to lowercase
+                string safeUsername = username.Trim().ToLower();
+
+                // Get the table
+                Table<AccountTable> accounts = connection.GetTable<AccountTable>();
+
+                // Check if any account exists with the username
+                return accounts.Any(x => x.Username == safeUsername);
+            }
+        }
+
+        /// <summary>
+        /// Gets if an email address exists
+        /// </summary>
+        /// <param name="email">email address</param>
+        /// <returns>true=exists, false=does not exist</returns>
+        public static bool EmailExists(string email)
+        {
+            // Connect to the MSSQL database
+            using (MSSqlConnection connection = MSSqlConnection.GetConnection())
+            {
+                // Remove the spaces before and after the email and change the email to lowercase
+                string safeEmailAddress = email.Trim().ToLower();
+
+                // Get the table
+                Table<AccountTable> accounts = connection.GetTable<AccountTable>();
+
+                // Check if any account exists with the email address
+                return accounts.Any(x => x.EmailAddress == safeEmailAddress);
+            }
         }
     }
 }

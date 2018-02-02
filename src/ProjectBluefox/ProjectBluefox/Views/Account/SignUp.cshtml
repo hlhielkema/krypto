@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = @"..\Shared\_Public.cshtml";    
+}
+
+<div class="container">
+    <div class="form" data-signup-token="@Model.Token">
+        <h1>Sign-up</h1>
+        <form>
+            <div class="form-element" data-name="Username">
+                <div class="label">Username</div>
+                <input type="text" data-bind="value: username" />
+            </div>
+            <div class="form-element" data-name="Email">
+                <div class="label">E-mail address</div>
+                <input type="text" data-bind="value: email" />
+            </div>            
+            <div class="form-element" data-name="Password">
+                <div class="label">Password</div>
+                <input type="password" data-bind="value: password" />
+            </div>
+            <div class="form-element" data-name="PasswordRepeat">
+                <div class="label">Repeat password</div>
+                <input type="password" data-bind="value: repeatPassword" />
+            </div>         
+            <input type="submit" class="button submit-button" value="Create account" />
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Scripts -->
+    @Scripts.Render("~/Scripts/ViewModels/Account/SignUpViewModel.js")
+}

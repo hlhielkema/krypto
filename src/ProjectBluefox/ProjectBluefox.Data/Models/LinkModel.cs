@@ -16,6 +16,6 @@ namespace ProjectBluefox.Models
         public DateTime DateCreated { get; set; }
 
         public string FormattedDateCreated
-           => DateCreated.ToString("dd-MM-yyyy hh:mm");
+           => DateCreated.ToString("dd-MM-yyyy HH:mm");
     }
 }

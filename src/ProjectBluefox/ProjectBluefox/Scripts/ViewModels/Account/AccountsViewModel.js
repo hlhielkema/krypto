@@ -4,6 +4,7 @@
     self.emailAddress = ko.observable(data.EmailAddress);
     self.role = ko.observable(data.RoleName);
     self.enabled = ko.observable(data.Enabled);
+    self.lastLogon = ko.observable(data.FormattedLastLogon);
 }
 
 function CurrenciesViewModel() {

@@ -57,15 +57,21 @@
 
 
     <h3>Create comment</h3>
-    <form>
-        <div class="label">Vote</div>
-        <select data-bind="options: voteOptions, optionsText: 'label', optionsValue : 'value', value: vote"></select>
-        <div class="label">Message</div>
-        <textarea data-bind="value: message"></textarea>
-    </form>
-    <div class="button submit-button" data-bind="click: sendComment">
-        Send
-    </div>
+    <div class="form">
+        <form>
+            <div class="form-element">
+                <div class="label">Vote</div>
+                <select data-bind="options: voteOptions, optionsText: 'label', optionsValue : 'value', value: vote"></select>
+            </div>            
+            <div class="form-element">
+                <div class="label">Message</div>
+                <textarea data-bind="value: message"></textarea>
+            </div>            
+        </form>
+        <div class="button submit-button" data-bind="click: sendComment">
+            Send
+        </div>
+    </div>    
 </div>
 
 

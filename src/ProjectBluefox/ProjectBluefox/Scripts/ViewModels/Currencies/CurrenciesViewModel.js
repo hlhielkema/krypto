@@ -41,8 +41,7 @@ function CurrenciesViewModel() {
             type: "GET",
             url: '/Currencies/GetCurrencies',
             data: { },
-            success: function (result) {
-                console.log('result', result);                
+            success: function (result) {                        
                 var currencies = [];
                 for (var i = 0; i < result.length; i++) {      
                     currencies.push(new CurrencyViewModel(result[i]));
