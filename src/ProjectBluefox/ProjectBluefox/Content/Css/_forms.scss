@@ -12,6 +12,7 @@
         }
 
         input, select, textarea {
+            border-radius:0;
             -webkit-appearance: none;
             -moz-appearance: none;
             width: 100%;
@@ -49,12 +50,5 @@
                 margin-top: 12px;
             }
         }
-    }
-
-    .form-result {
-        color: red;
-        font-weight: 600;
-        font-size: 12px;
-        padding-top: 4px;
     }
 }

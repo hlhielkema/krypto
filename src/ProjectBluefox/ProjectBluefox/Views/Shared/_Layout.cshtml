@@ -32,6 +32,7 @@
                 <a class="logo" href="/">
                     <img src="~/Content/Images/logo-wide.svg" height="28">
                 </a>
+               
                 <div class="search">
                     <input type="text" placeholder="Search..." />
                 </div>
@@ -39,7 +40,7 @@
         </div>
 
         <div class="row menu-row">
-            <div class="container">
+            <div class="container mobile-hidden">
                 @if (ViewBag.MenuButtons != null)
                 {
                     foreach (NavigationMenuButton button in ViewBag.MenuButtons)
@@ -63,6 +64,11 @@
                     Sign out
                 </a>
             </div>
+            <div class="container mobile-visible">
+                <div class="open-mobile-menu">
+                     <i class="fa fa-bars"></i> Menu
+                </div>
+            </div>
         </div>
     </header>
     <div class="row content-body">
@@ -71,9 +77,38 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    @Scripts.Render("~/ScriptBundles/Vendors")
-    @Scripts.Render("~/ScriptBundles/Util")
-    @RenderSection("Scripts", required: false)
-</body>
+
+    @if (ViewBag.MenuButtons != null)
+    {
+        <div class="mobile-menu mobile-visible">
+            @foreach (NavigationMenuButton button in ViewBag.MenuButtons)
+            {
+                if (button.IsActive)
+                {
+                    <a href="@button.Url" class="menu-button active">
+                        @button.DisplayName
+                    </a>
+                }
+                else
+                {
+                    <a href="@button.Url" class="menu-button">
+                        @button.DisplayName
+                    </a>
+                }            
+            }
+            <a href="/Account/SignOut" class="sign-out">
+                Sign out
+            </a>
+            <a href="#" class="menu-button close-mobile-menu">
+                Cancel
+            </a>
+        </div>
+    }
+        
+
+        <!-- Scripts -->
+        @Scripts.Render("~/ScriptBundles/Vendors")
+        @Scripts.Render("~/ScriptBundles/Util")
+        @RenderSection("Scripts", required: false)
+    </body>
 </html>

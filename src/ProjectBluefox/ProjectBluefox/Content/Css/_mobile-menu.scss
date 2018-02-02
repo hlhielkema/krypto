@@ -1,0 +1,46 @@
+﻿.mobile-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: #fff;
+    display: none;
+
+    @media (max-width: 575.8px) {
+        &.opened {
+            display: block;
+        }
+    }
+
+    a {
+        color: #1e2f50;
+        padding: 10px;
+        text-decoration: none;
+        font-size: 22px;
+        float: left;
+        width: 100%;
+        border-bottom: solid 1px #ccc;
+
+        &.sign-out {
+            color: red;
+        }
+    }
+}
+
+header .open-mobile-menu {
+    padding: 11px;
+}
+
+.mobile-visible {
+    @media (min-width: 576px) {
+        display: none;
+    }
+}
+.mobile-hidden {
+    @media (max-width: 575.8px) {
+        display: none;
+    }
+}

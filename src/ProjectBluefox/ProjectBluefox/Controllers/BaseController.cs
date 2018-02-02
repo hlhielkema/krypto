@@ -97,6 +97,7 @@ namespace ProjectBluefox.Controllers
                     messages.Add(field.Key, field.Value.Errors.First().ErrorMessage);
                 }
             }
+            Response.TrySkipIisCustomErrors = true;
             Response.StatusCode = 412; // invalid request
             return Json(messages, JsonRequestBehavior.AllowGet);
         }
@@ -110,6 +111,7 @@ namespace ProjectBluefox.Controllers
             {
                 { name, message }
             };
+            Response.TrySkipIisCustomErrors = true;
             Response.StatusCode = 412; // invalid request
             return Json(messages, JsonRequestBehavior.AllowGet);
         }
@@ -119,6 +121,7 @@ namespace ProjectBluefox.Controllers
             Dictionary<string, string> messages = new Dictionary<string, string>();
             foreach (KeyValuePair<string, string> field in errors)
                 messages.Add(field.Key, field.Value);
+            Response.TrySkipIisCustomErrors = true;
             Response.StatusCode = 412; // invalid request
             return Json(messages, JsonRequestBehavior.AllowGet);
         }

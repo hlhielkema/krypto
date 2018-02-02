@@ -33,6 +33,7 @@ table {
   border-spacing: 0; }
 
 .button {
+  -webkit-appearance: none;
   float: left;
   margin: 12px 0 4px 0;
   padding: 8px 16px;
@@ -122,6 +123,7 @@ form .form-element {
     font-weight: 600;
     font-size: 12px; }
   form .form-element input, form .form-element select, form .form-element textarea {
+    border-radius: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 100%;
@@ -144,12 +146,6 @@ form .form-element {
     padding-top: 4px; }
   form .form-element.error-only .validation-error-message {
     margin-top: 12px; }
-
-form .form-result {
-  color: red;
-  font-weight: 600;
-  font-size: 12px;
-  padding-top: 4px; }
 
 /*
     Height classes
@@ -3674,6 +3670,41 @@ pre {
 
 a {
   color: #1fa1f7; }
+
+.mobile-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: #fff;
+  display: none; }
+  @media (max-width: 575.8px) {
+    .mobile-menu.opened {
+      display: block; } }
+  .mobile-menu a {
+    color: #1e2f50;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 22px;
+    float: left;
+    width: 100%;
+    border-bottom: solid 1px #ccc; }
+    .mobile-menu a.sign-out {
+      color: red; }
+
+header .open-mobile-menu {
+  padding: 11px; }
+
+@media (min-width: 576px) {
+  .mobile-visible {
+    display: none; } }
+
+@media (max-width: 575.8px) {
+  .mobile-hidden {
+    display: none; } }
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome

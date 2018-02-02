@@ -222,6 +222,7 @@
     <Content Include="Content\Css\_links-list.scss" />
     <Content Include="manifest.webapp" />
     <Content Include="Content\Css\_images.scss" />
+    <Content Include="Content\Css\_mobile-menu.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -229,6 +230,7 @@
     </None>
     <None Include="Scripts\Vendors\jQuery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Util\form-validation.js" />
+    <Content Include="Scripts\Util\responsive.js" />
     <Content Include="Scripts\Vendors\jQuery\jquery-1.10.2.js" />
     <Content Include="Scripts\Vendors\jQuery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\Vendors\KnockoutJs\knockout-3.4.2.js" />
