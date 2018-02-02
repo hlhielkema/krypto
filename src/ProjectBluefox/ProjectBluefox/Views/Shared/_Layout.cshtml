@@ -8,7 +8,7 @@
 
     <title>Krypto</title>
 
-    <!-- Safari -->    
+    <!-- Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Icon -->
@@ -23,6 +23,7 @@
 
     <!-- Styles -->
     @Styles.Render("~/Content/Css/bundle.min.css")
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 <body>
 
@@ -81,27 +82,31 @@
     @if (ViewBag.MenuButtons != null)
     {
         <div class="mobile-menu mobile-visible">
+            <div class="mobile-menu-header">
+                <a class="logo" href="/">
+                    <img src="~/Content/Images/logo-wide.svg" height="28">
+                </a>
+                <i class="fas fa-times close-mobile-menu"></i>
+            </div>
+                           
             @foreach (NavigationMenuButton button in ViewBag.MenuButtons)
             {
                 if (button.IsActive)
                 {
                     <a href="@button.Url" class="menu-button active">
-                        @button.DisplayName
+                        <i class="@button.Icon"></i> @button.DisplayName
                     </a>
                 }
                 else
                 {
                     <a href="@button.Url" class="menu-button">
-                        @button.DisplayName
+                        <i class="@button.Icon"></i> @button.DisplayName
                     </a>
                 }            
             }
-            <a href="/Account/SignOut" class="sign-out">
-                Sign out
-            </a>
-            <a href="#" class="menu-button close-mobile-menu">
-                Cancel
-            </a>
+            <a href="/Account/SignOut" class="menu-button sign-out">
+                <i class="fas fa-sign-out-alt"></i> Sign out
+            </a>            
         </div>
     }
         

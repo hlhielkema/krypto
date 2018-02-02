@@ -9,7 +9,10 @@ namespace ProjectBluefox.Models
     {
         public string DisplayName { get; set; }
 
+        public string Icon { get; set; } = "far fa-circle";
+
         public string Url { get; set; }
+        
 
         public bool IsActive { get; set; }
     }

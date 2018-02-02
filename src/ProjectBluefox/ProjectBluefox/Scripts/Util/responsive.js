@@ -1,9 +1,9 @@
 ﻿$(function () {
     $('.open-mobile-menu').click(function () {        
-        $('.mobile-menu').addClass('opened');
+        $('body').addClass('mobile-menu-opened');
     });
     $('.close-mobile-menu').click(function (e) {
         e.preventDefault();
-        $('.mobile-menu').removeClass('opened');
+        $('body').removeClass('mobile-menu-opened');
     });
 });

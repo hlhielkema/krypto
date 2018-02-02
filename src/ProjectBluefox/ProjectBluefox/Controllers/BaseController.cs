@@ -46,6 +46,7 @@ namespace ProjectBluefox.Controllers
             yield return new NavigationMenuButton()
             {
                 DisplayName = "Currencies",
+                Icon = "fab fa-ethereum",
                 Url = "/Currencies/Index",
                 IsActive = active == "currencies",
             };
@@ -53,6 +54,7 @@ namespace ProjectBluefox.Controllers
             yield return new NavigationMenuButton()
             {
                 DisplayName = "Links",
+                Icon = "fas fa-link",
                 Url = "/Links/Index",
                 IsActive = active == "links",
             };
@@ -60,6 +62,7 @@ namespace ProjectBluefox.Controllers
             yield return new NavigationMenuButton()
             {
                 DisplayName = "Invite",
+                Icon = "far fa-plus-square",
                 Url = "/Account/Invite",
                 IsActive = active == "invite",
             };
@@ -67,6 +70,7 @@ namespace ProjectBluefox.Controllers
             yield return new NavigationMenuButton()
             {
                 DisplayName = "Password",
+                Icon = "fas fa-key",
                 Url = "/Account/ChangePassword",
                 IsActive = active == "changepassword",
             };
@@ -76,6 +80,7 @@ namespace ProjectBluefox.Controllers
                 yield return new NavigationMenuButton()
                 {
                     DisplayName = "Accounts",
+                    Icon = "fas fa-users",
                     Url = "/Account/Accounts",
                     IsActive = active == "accounts",
                 };

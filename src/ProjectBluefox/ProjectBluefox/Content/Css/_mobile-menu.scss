@@ -9,29 +9,65 @@
     background: #fff;
     display: none;
 
-    @media (max-width: 575.8px) {
-        &.opened {
-            display: block;
-        }
-    }
 
-    a {
+
+    a.menu-button {
         color: #1e2f50;
-        padding: 10px;
+        padding: 16px;
         text-decoration: none;
-        font-size: 22px;
+        font-size: 18px;
         float: left;
         width: 100%;
-        border-bottom: solid 1px #ccc;
+        border-bottom: solid 1px #efefef;
+
+        i {
+            width: 28px;
+            padding-right: 10px;
+            text-align: center;
+        }
 
         &.sign-out {
             color: red;
         }
     }
+
+    .mobile-menu-header {
+        float: left;
+        width: 100%;
+        border-bottom: solid 2px #efefef;
+
+        .logo {
+            float: left;
+            padding: 15px 8px 8px 18px;
+        }
+
+        .close-mobile-menu {
+            float: right;
+            color: #ccc;
+            font-size: 20px;
+            padding: 18px;
+            width: 18px;
+            height: 18px;
+            border-left: solid 2px #efefef;
+            cursor: pointer;
+        }
+    }
 }
+
+@media (max-width: 575.8px) {
+    body.mobile-menu-opened {
+        height:100%;
+        overflow:hidden;
+        .mobile-menu {
+            display: block;
+        }
+    }
+}
+
 
 header .open-mobile-menu {
     padding: 11px;
+    cursor:pointer;
 }
 
 .mobile-visible {
