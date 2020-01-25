@@ -1,5 +1,9 @@
-# Krypto
+![wallpaper](/logo/wallpapers/wallpaper-krypto.png)
 
+## Background
+todo
+
+## Screenshots
 ![screenshot-a](screenshots/screenshot-a.png)
 ![screenshot-b](screenshots/screenshot-b.png)
 ![screenshot-c](screenshots/screenshot-c.png)
@@ -7,10 +11,10 @@
 
 ## Directories
 
-    - database   Database table create queries
-    - docs       Documentation
-    - logo       Krypto logo files
-    - src        Project source code 
+    - database    Database table create queries
+    - logo        Krypto logo files
+    - screenshots Screenshots
+    - src         Project source code 
 
 ## Development setup
 
