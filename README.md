@@ -3,12 +3,11 @@
 ![wallpaper](/logo/wallpapers/wallpaper-krypto.png)
 
 ## Background
-Krypto is a simple mobile-first website to track upcoming cryptocurrencies. It works best for small groups. Currencies can be added and rated by other members.
-
-This website was made in the “golden days” of cryptocurrency trading as a small side project.
+Krypto is a simple mobile-first website to track upcoming cryptocurrencies. It works best for small groups. Currencies can be added and rated by other members. This website was made in the “golden days” of cryptocurrency trading as a small side project. The initial name of the project was `Bluefox`. The name was later changed to `Krypto`.
 
 Current rates of cryptocurrencies are loaded from the coinmarketcap.com API.
 
+**Warning:** this application is designed to be used on a small scale. Please review and update all code before using it in public production environments.
 
 ## Directories
 
@@ -54,5 +53,5 @@ The required database tables can be created with the SQL scripts in the `databas
 ### Invite new members
 ![screenshot-c](screenshots/screenshot-c.png)
 
-### Menu
+### Mobile menu
 ![screenshot-d](screenshots/screenshot-d.png)
