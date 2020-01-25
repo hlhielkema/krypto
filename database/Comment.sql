@@ -1,7 +1,7 @@
 USE [BluefoxData]
 GO
 
-/****** Object:  Table [dbo].[Currency.Comment]    Script Date: 6-1-2018 15:18:18 ******/
+/****** Object:  Table [dbo].[Currency.Comment]    Script Date: 25-1-2020 15:41:31 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,6 +13,7 @@ CREATE TABLE [dbo].[Currency.Comment](
 	[ExternalId] [uniqueidentifier] NOT NULL,
 	[Currency] [int] NOT NULL,
 	[CreatedBy] [int] NOT NULL,
+	[DeletedBy] [int] NULL,
 	[DateCreated] [datetime] NOT NULL,
 	[Vote] [int] NOT NULL,
 	[Message] [nvarchar](2000) NOT NULL,
@@ -22,6 +23,5 @@ CREATE TABLE [dbo].[Currency.Comment](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
 
