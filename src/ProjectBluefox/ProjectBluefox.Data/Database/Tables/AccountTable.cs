@@ -16,7 +16,7 @@ namespace ProjectBluefox.Database.Tables
         public string Password { get; set; } // hash, max 70
 
         [Column]
-        public string EmailAddress { get; set; } // hash, max 200
+        public string EmailAddress { get; set; } // max 200
 
         [Column]
         public bool Enabled { get; set; }

@@ -1,8 +1,9 @@
 # Krypto
 
-## Lore
-in a world where banks oppress the people of earth, the banks tried to make the perfect coin, using a mixture of sugar, spice and everything nice. but Satoshi Nakamoto acidentally added a chemical bytelike ingredient to the concoction, the  mysterious substance called chemical B,. Instead of creating the perfect little coin he created Bitcoin. 
-These are the stories of the Krypto boys trying to make bank and stay woke in this opportunistic wordt of getting lit.
+![screenshot-a](screenshots/screenshot-a.png)
+![screenshot-b](screenshots/screenshot-b.png)
+![screenshot-c](screenshots/screenshot-c.png)
+![screenshot-d](screenshots/screenshot-d.png)
 
 ## Directories
 
